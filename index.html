@@ -2,23 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Modern+Symphony&display=swap" rel="stylesheet">
 <style>
     html, body {
         height: 100%;
+        min-height: -webkit-fill-available; /* iOS Safari fix */
         margin: 0;
         padding: 0;
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         color: white;
-        overflow-x: hidden; /* Prevent sideways scaling on mobile */
+        background-color: black; /* letterbox bars color */
     }
 
     body {
-        background: url('images/FRISSON_HeroImage_Tagline_2400px.jpeg') no-repeat center center/cover;
         display: flex;
         justify-content: center;
         align-items: flex-end;
+        height: 100vh;
+        min-height: -webkit-fill-available;
+    }
+
+    /* Background layer for aspect control */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('images/FRISSON_HeroImage_Tagline_2400px.jpeg') center center no-repeat;
+        background-size: contain; /* mobile: preserve aspect ratio */
+        background-color: black;
+        z-index: -1;
+    }
+
+    /* Desktop override – keep full bleed */
+    @media (min-width: 1025px) {
+        body::before {
+            background-size: cover;
+        }
     }
 
     /* Floating form styling */
@@ -90,27 +113,6 @@
     @keyframes fadeInUp {
         from { opacity: 0; transform: translateY(30px); }
         to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Mobile scaling */
-    @media screen and (max-width: 768px) {
-        body {
-            background-size: cover;
-            background-position: center center;
-            /* Uncomment below if you have a smaller mobile hero image */
-            /* background-image: url('images/FRISSON_HeroImage_Tagline_mobile.jpeg'); */
-        }
-
-        #consult-form {
-            flex-direction: column;
-            width: 90%;
-        }
-
-        #consult-form input[type="text"],
-        #consult-form input[type="submit"] {
-            width: 100%;
-            font-size: 1.1em;
-        }
     }
 </style>
 </head>
