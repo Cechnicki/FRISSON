@@ -1,105 +1,85 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FRISSON</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css?v=2" />
-</head>
-<body class="is-preload">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: white;
+        }
 
-    <!-- Header -->
-    <header id="header">
-        <h1>FRISSON</h1>
-        <p>Your story should inspire chills!</p>
-    </header>
+        body {
+            background: url('images/FRISSON_HeroImage_2400px.jpg') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
-    <!-- Video Section -->
-    <section id="videos" style="
-        position: relative;
-        background: url('images/FRISSON_HeroImage_2400px.jpg') no-repeat center center/cover;
-        padding: 3em 0;
-        overflow: hidden;
-    ">
-        <!-- Dark overlay -->
-        <div style="
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1;
-        "></div>
+        h1 {
+            font-size: 4em;
+            letter-spacing: 0.1em;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+            margin: 0;
+        }
 
-        <!-- Videos -->
-        <div style="
+        /* Bottom fixed form */
+        #consult-form {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.6);
+            padding: 1em;
             display: flex;
             justify-content: center;
-            gap: 1.5em;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 2;
-        ">
-            <video controls preload="none" width="320" height="180" style="
-                opacity: 0.85;
-                border-radius: 12px;
-                box-shadow: 0 8px 24px rgba(0,0,0,0.7);
-                animation: fadeIn 1.5s ease forwards;
-            ">
-                <source src="assets/videos/FRISSON DIOR Sound Design.mov" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
 
-            <video controls preload="none" width="320" height="180" style="
-                opacity: 0.85;
-                border-radius: 12px;
-                box-shadow: 0 8px 24px rgba(0,0,0,0.7);
-                animation: fadeIn 1.5s ease forwards 0.5s;
-            ">
-                <source src="assets/videos/FRISSON ICONS Demo.mov" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+        #consult-form input[type="text"] {
+            padding: 0.75em;
+            font-size: 1em;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+            width: 300px;
+        }
 
-            <video controls preload="none" width="320" height="180" style="
-                opacity: 0.85;
-                border-radius: 12px;
-                box-shadow: 0 8px 24px rgba(0,0,0,0.7);
-                animation: fadeIn 1.5s ease forwards 1s;
-            ">
-                <source src="assets/videos/FRISSON OCTANE Promo.mov" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-    </section>
+        #consult-form input[type="submit"] {
+            padding: 0.75em 1.25em;
+            font-size: 1em;
+            border: none;
+            background: #c19d53; /* Ultra-luxe gold */
+            color: white;
+            cursor: pointer;
+            border-radius: 0 4px 4px 0;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+            transition: background 0.3s;
+        }
 
-    <!-- Cinematic fade-in animation -->
-    <style>
-    @keyframes fadeIn {
-        0% { opacity: 0; transform: translateY(30px); }
-        100% { opacity: 0.85; transform: translateY(0); }
-    }
+        #consult-form input[type="submit"]:hover {
+            background: #a07f3a;
+        }
     </style>
+</head>
+<body>
 
-    <!-- Signup Form -->
-    <form id="signup-form" method="post" action="#">
-        <input type="email" name="email" id="email" placeholder="Email Address" />
-        <input type="submit" value="Sign Up" />
+    <h1>FRISSON</h1>
+
+    <form id="consult-form" action="https://formspree.io/f/yourFormID" method="POST">
+        <input type="hidden" name="_subject" value="Form Request for Consultation">
+        <input type="text" name="contact" placeholder="Enter Email or Text" required>
+        <input type="submit" value="REQUEST CONSULTATION">
     </form>
-
-    <!-- Footer -->
-    <footer id="footer">
-        <ul class="icons">
-            <li><a href="#" class="icon brands fa-tiktok"><span class="label">Tiktok</span></a></li>
-            <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-            <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-            <li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
-        </ul>
-        <ul class="copyright">
-            <li>&copy; FRISSON LLC</li>
-        </ul>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="assets/js/main.js?v=2"></script>
 
 </body>
 </html>
+
