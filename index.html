@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Modern+Symphony&display=swap" rel="stylesheet">
     <style>
         html, body {
@@ -17,37 +16,24 @@
         body {
             background: url('images/FRISSON_HeroImage_2400px.jpg') no-repeat center center/cover;
             display: flex;
-            flex-direction: column;
             justify-content: center;
-            align-items: center;
+            align-items: flex-end;
         }
 
-        h1 {
-            font-size: 4em;
-            letter-spacing: 0.1em;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.8);
-            margin: 0;
-        }
-
-        /* Bottom fixed form */
+        /* Floating form styling */
         #consult-form {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(0,0,0,0.6);
-            padding: 1em;
+            margin-bottom: 5%;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(6px);
+            background: rgba(0,0,0,0.35);
+            border-radius: 6px;
+            overflow: hidden;
         }
 
         #consult-form input[type="text"] {
             padding: 0.75em;
             font-size: 1em;
             border: none;
-            border-radius: 4px 0 0 4px;
             outline: none;
             width: 300px;
         }
@@ -60,7 +46,6 @@
             background: #2f2f2f; /* Luxe charcoal */
             color: white;
             cursor: pointer;
-            border-radius: 0 4px 4px 0;
             font-weight: bold;
             letter-spacing: 0.05em;
             display: flex;
@@ -73,20 +58,24 @@
             background: #1a1a1a;
         }
 
-        /* Success message styling */
+        /* Cinematic thank-you */
         #thank-you {
             position: fixed;
-            bottom: 60px;
-            background: rgba(0,0,0,0.7);
-            padding: 0.75em 1.5em;
+            bottom: 50%;
+            left: 50%;
+            transform: translate(-50%, 50%);
+            background: rgba(0,0,0,0.6);
+            padding: 1em 2em;
             border-radius: 6px;
-            font-size: 1.2em;
+            font-size: 1.5em;
             opacity: 0;
-            transition: opacity 0.4s ease-in-out;
+            pointer-events: none;
+            transition: opacity 1.5s ease-in-out;
         }
 
         #thank-you.show {
             opacity: 1;
+            transition: opacity 1.5s ease-in-out;
         }
     </style>
 </head>
@@ -110,11 +99,12 @@
                 headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
-                    document.getElementById('thank-you').classList.add('show');
+                    let thankYou = document.getElementById('thank-you');
+                    thankYou.classList.add('show');
                     form.reset();
                     setTimeout(() => {
-                        document.getElementById('thank-you').classList.remove('show');
-                    }, 3000);
+                        thankYou.classList.remove('show');
+                    }, 4000);
                 } else {
                     alert('Something went wrong. Please try again.');
                 }
@@ -126,5 +116,3 @@
 
 </body>
 </html>
-
-
