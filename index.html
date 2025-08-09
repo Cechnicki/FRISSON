@@ -19,100 +19,43 @@
             justify-content: center;
             align-items: flex-end;
         }
-
-        /* Floating form styling */
-        #consult-form {
-            margin-bottom: 5%;
-            display: flex;
-            backdrop-filter: blur(6px);
-            background: rgba(0,0,0,0.35);
-            border-radius: 6px;
-            overflow: hidden;
-        }
-
-        #consult-form input[type="text"] {
-            padding: 0.75em;
-            font-size: 1em;
-            border: none;
-            outline: none;
-            width: 300px;
-        }
-
-        #consult-form input[type="submit"] {
-            padding: 0.75em 1.25em;
-            font-size: 1em;
-            font-family: 'Modern Symphony', serif;
-            border: none;
-            background: #2f2f2f; /* Luxe charcoal */
-            color: white;
-            cursor: pointer;
-            font-weight: bold;
-            letter-spacing: 0.05em;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.3s;
-        }
-
-        #consult-form input[type="submit"]:hover {
-            background: #1a1a1a;
-        }
-
-        /* Cinematic thank-you */
-        #thank-you {
-            position: fixed;
-            bottom: 50%;
-            left: 50%;
-            transform: translate(-50%, 50%);
-            background: rgba(0,0,0,0.6);
-            padding: 1em 2em;
-            border-radius: 6px;
-            font-size: 1.5em;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 1.5s ease-in-out;
-        }
-
-        #thank-you.show {
-            opacity: 1;
-            transition: opacity 1.5s ease-in-out;
-        }
-    </style>
-</head>
-<body>
-
-    <form id="consult-form" action="https://formspree.io/f/mzzvyeyl" method="POST">
-        <input type="hidden" name="_subject" value="Form Request for Consultation">
-        <input type="text" name="contact" placeholder="Enter Email or Text" required>
-        <input type="submit" value="REQUEST CONSULTATION">
-    </form>
-
-    <div id="thank-you">Mahalo nui loa!</div>
-
-    <script>
-        document.getElementById('consult-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            var form = this;
-            fetch(form.action, {
-                method: form.method,
-                body: new FormData(form),
-                headers: { 'Accept': 'application/json' }
-            }).then(response => {
-                if (response.ok) {
-                    let thankYou = document.getElementById('thank-you');
-                    thankYou.classList.add('show');
-                    form.reset();
-                    setTimeout(() => {
-                        thankYou.classList.remove('show');
-                    }, 4000);
-                } else {
-                    alert('Something went wrong. Please try again.');
-                }
-            }).catch(() => {
-                alert('Something went wrong. Please try again.');
-            });
-        });
-    </script>
+       
+        <!-- Floating Form -->
+<form id="consultation-form" action="https://formspree.io/f/mzzvyeyl" method="POST" style="
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+">
+    <input type="text" name="contact" placeholder="Enter Email or Text" required style="
+        padding: 12px 15px;
+        font-size: 16px;
+        border: 1px solid #555;
+        border-radius: 4px;
+        background-color: rgba(42, 42, 42, 0.85);
+        color: #ccc;
+        outline: none;
+    ">
+    <button type="submit" style="
+        padding: 12px 20px;
+        font-size: 16px;
+        font-family: 'Modern Symphony Serif', serif;
+        border: 1px solid #555;
+        border-radius: 4px;
+        background-color: #1a1a1a;
+        color: #ccc;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    ">
+        REQUEST CONSULTATION
+    </button>
+</form>
 
 </body>
 </html>
+
