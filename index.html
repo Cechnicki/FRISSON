@@ -20,7 +20,7 @@
             align-items: flex-end;
         }
        
-        <!-- Floating Form -->
+    <!-- Floating Form -->
 <form id="consultation-form" action="https://formspree.io/f/mzzvyeyl" method="POST" style="
     position: fixed;
     bottom: 40px;
@@ -56,6 +56,45 @@
     </button>
 </form>
 
+<!-- Mahalo Message -->
+<div id="thank-you" style="
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(26, 26, 26, 0.85);
+    color: #ccc;
+    padding: 12px 20px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 2s ease;
+    font-size: 18px;
+    font-family: serif;
+">
+    Mahalo nui loa!
+</div>
+
+<script>
+document.getElementById('consultation-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var form = this;
+    fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+    }).then(function(response) {
+        if (response.ok) {
+            form.reset();
+            document.getElementById('thank-you').style.opacity = 1;
+            setTimeout(function() {
+                document.getElementById('thank-you').style.opacity = 0;
+            }, 4000);
+        }
+    });
+});
+</script>
+
 </body>
 </html>
+
 
